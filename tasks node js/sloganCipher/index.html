@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Лозунговая шифровка</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        let alphabet = 'абвгдежзиклмнопрстуфхцчшщыьэюя';
+        let alphabetSplit = alphabet.split(''); // дробим алфавит на массив из элементов - букв
+
+        let cipher = prompt("Введите лозунговое слово: "); // ввод лозунговое слова
+        let cipherSplit = cipher.split(''); // дробим лозунговое слово на массив побуквенно
+
+        let alphabetSplit2 = cipherSplit + ',' + alphabetSplit; // вставляем в новый массив-алфавит введенное лозунговое слово
+        alphabetSplit2 = alphabetSplit2.split(',') // делаем массив по запятой
+        alphabetSplit2 = Array.from(new Set(alphabetSplit2)); // удаляем повторяющиеся буквы
+        alert(alphabetSplit2); // вывод нового алфавита
+
+        let result = '';
+
+
+        function sloganCipher() { // функция зашифровки слова
+            let cipher2 = prompt("Введите слово зашифровки: ");
+            let cipherSplit2 = cipher2.split('');
+            for (let i = 0; i < cipherSplit2.length; i++) {
+                for (let j = 0; j < alphabetSplit2.length; j++) {
+
+                    if (alphabetSplit2[j] == cipherSplit2[i]) {
+                        result += alphabetSplit2[j + 6];
+                    }
+                }
+
+            }
+            alert(result);
+            result = '';
+        }
+
+        function offCipher() { // функция расшифровки
+            let cipher2 = prompt("Введите слово расшифровки: ");
+            let cipherSplit2 = cipher2.split('');
+            for (let i = 0; i < cipherSplit2.length; i++) {
+                for (let j = 0; j < alphabetSplit2.length; j++) {
+
+                    if (alphabetSplit2[j] == cipherSplit2[i]) {
+                        result += alphabetSplit2[j - 6];
+                        if (j < 0) {
+                            result = +alphabetSplit2[alphabetSplit2.length + j]
+                        }
+                    }
+                }
+
+            }
+            alert(result);
+            result = '';
+        }
+    </script>
+</head>
+
+<body>
+    <div class="buttons">
+        <button class="btnCipher" onclick="sloganCipher()">Зашифровать</button>
+        <button class="btnUnCipher" onclick="offCipher()">Расшифровать</button>
+    </div>
+</body>
+
+</html>

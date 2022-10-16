@@ -1,0 +1,28 @@
+body {
+    height: 100%;
+    background: linear-gradient(200deg, #a8d7e0, #213b40);
+    /* Цвета градиента */
+    background-size: 300% 400%
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+.button {
+    display: inline-block;
+    color: white;
+    padding: 20px 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #a8d7e0 0%, #4830F0 51%, #9EEFE1 100%);
+    background-size: 200% auto;
+    transition: .5s;
+}

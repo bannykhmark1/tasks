@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Порядковая шифровка</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+        let alphabetSplit = alphabet.split('');
+        let sum = 0;
+        let resultEncryption = '';
+        let resultDecipherment = '';
+
+        function encryption() {
+            let cipher = prompt('Введите слово для зашифровки: ');
+            let cipherSplit = cipher.split('');
+            for (let i = 0; i < cipherSplit.length; i++) {
+                for (let j = 0; j < alphabetSplit.length; j++) {
+
+                    if (cipherSplit[i] == alphabetSplit[j]) {
+
+                        sum = j + 1; //индекс элемента массива
+                        resultEncryption += sum + ' '; //закидывает в строку индексы
+                    }
+                }
+
+            }
+            return alert(resultEncryption.split(' ').filter(Boolean));
+            console.log(resultEncryption.split(' ').filter(Boolean))
+        }
+
+
+
+        function decipherment() {
+            let decrypt = prompt('Введите шифр: ');
+            decrypt = decrypt.split(' ');
+            for (let i = 0; i < decrypt.length; i++) {
+                for (let j = 0; j < alphabetSplit.length; j++) {
+                    if (alphabetSplit[decrypt[i]] == alphabetSplit[j]) {
+                        sum = alphabetSplit[j - 1]; //индекс элемента массива
+                        resultDecipherment += sum + ''; //закидывает в строку индексы
+                    }
+                }
+
+            }
+            console.log(decrypt);
+            return alert(resultDecipherment);
+            console.log(resultDecipherment);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="buttons">
+        <button class="btnCipher" onclick="encryption()">Зашифровать</button>
+        <button class="btnUnCipher" onclick="decipherment()">Расшифровать</button>
+    </div>
+</body>
+
+</html>
